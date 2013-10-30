@@ -64,6 +64,26 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 
 			if ( $args->has_children )
 				$class_names .= ' dropdown';
+			
+			/*
+			Css for Submenu
+			.dropdown-submenu{position:relative;}
+			.dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
+			.dropdown-submenu:hover>.dropdown-menu{display:block;}
+			.dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
+			.dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
+			.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+	
+			Was in need of submenu in my wordpress theme which was not available in bootstrap 3	
+			*/	
+				
+				if($depth > 0){
+					$class_names .= ' dropdown-submenu';
+				}
+				else {
+					$class_names .= ' dropdown';
+				}	
+				
 
 			if ( in_array( 'current-menu-item', $classes ) )
 				$class_names .= ' active';
